@@ -2,7 +2,7 @@
 
 Turns Europa Universalis IV guide videos on YouTube into playbooks. Each playbook is a checklist grouped
 by era, where every step has the in-game date shown in the video and a timestamped link back to it.
-See README.md for usage.
+`uv run eu4guide --help` lists the commands.
 
 ## Layout
 

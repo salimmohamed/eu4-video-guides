@@ -1,11 +1,14 @@
-"""The guide format: JSON schema, validation, and rendering to HTML."""
+"""The guide format (JSON schema, validation) and the static site build."""
 import html
 import json
 import re
+import shutil
 from importlib import resources
 from pathlib import Path
 
 GUIDES = Path("guides")
+REFERENCE = Path("reference")
+SITE = Path("site")
 
 STEP = {
     "type": "object",
@@ -74,41 +77,53 @@ def validate(g: dict) -> None:
                 raise ValueError(f"phase {pi} step {si}: 't' must be whole seconds")
 
 
-def render(json_path: Path) -> Path:
-    g = json.loads(json_path.read_text(encoding="utf-8-sig"))  # tolerate a BOM from Windows editors
+def load(path: Path) -> dict:
+    g = json.loads(path.read_text(encoding="utf-8-sig"))  # tolerate a BOM from Windows editors
     validate(g)
-    tpl = resources.files("eu4guide").joinpath("template.html").read_text(encoding="utf-8")
-    data = json.dumps(g, ensure_ascii=False).replace("</", "<\\/")
-    page = tpl.replace("__TITLE__", html.escape(f"{g['nation']} Playbook")).replace("/*GUIDE*/null", data)
-    out = json_path.with_suffix(".html")
-    out.write_text(page, encoding="utf-8")
-    render_index(json_path.parent)
-    return out
+    g["slug"] = path.stem
+    return g
 
 
-def render_index(folder: Path) -> Path:
-    rows = []
-    for f in sorted(folder.glob("*.json")):
-        g = json.loads(f.read_text(encoding="utf-8-sig"))
-        steps = sum(len(p["steps"]) for p in g["phases"])
-        rows.append(
-            f'<li><a href="{html.escape(f.stem)}.html">{html.escape(g["nation"])}</a>'
-            f'<span>{html.escape(g.get("patch", ""))} · {steps} steps · '
-            f'{html.escape(g["video"].get("channel", ""))}</span></li>')
-    page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>EU4 Playbooks</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Sans:wght@400;500&display=swap">
-<style>
-:root{{--bg:#f3f2ef;--fg:#22201f;--muted:#6b6560;--line:#dcd8d2;--accent:#8e1b24;color-scheme:light}}
-@media (prefers-color-scheme:dark){{:root{{--bg:#17161a;--fg:#ece8e3;--muted:#a39d96;--line:#36333a;--accent:#e0676f;color-scheme:dark}}}}
-body{{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 "IBM Plex Sans",system-ui,sans-serif;padding:32px max(16px,env(safe-area-inset-left,0px))}}
-main{{max-width:640px;margin:0 auto}} h1{{font-family:Cinzel,Georgia,serif;color:var(--accent);margin:0 0 16px}}
-ul{{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}}
-li{{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 2px;border-bottom:1px solid var(--line)}}
-a{{color:var(--fg);font-weight:500}} span{{color:var(--muted);font-size:.85rem}}
-</style></head><body><main><h1>EU4 Playbooks</h1><ul>
-{chr(10).join(rows)}
-</ul></main></body></html>"""
-    out = folder / "index.html"
-    out.write_text(page, encoding="utf-8")
-    return out
+def reference_html(refs: list[dict]) -> str:
+    """Static markup for the shared charts, so they show without JavaScript."""
+    if not refs:
+        return ""
+    e = html.escape
+    figs = []
+    for r in refs:
+        src = f"reference/{e(r['file'])}"
+        cap = f"\n      <figcaption>{e(r['caption'])}</figcaption>" if r.get("caption") else ""
+        figs.append(
+            f'    <figure>\n      <h3>{e(r["title"])}</h3>\n'
+            f'      <a class="img" href="{src}" target="_blank" rel="noopener">'
+            f'<img src="{src}" alt="{e(r.get("alt") or r["title"])}" loading="lazy" width="2000" height="1125"></a>'
+            f"{cap}\n    </figure>")
+    return ('<section id="reference" aria-labelledby="refh">\n    <h2 id="refh">Reference</h2>\n'
+            "    <p>Charts that apply to every nation. Click one to open it full size.</p>\n"
+            + "\n".join(figs) + "\n  </section>")
+
+
+def build_site(out: Path = SITE) -> Path:
+    """Render every guide in guides/ plus the reference charts into one static site."""
+    guides = [load(p) for p in sorted(GUIDES.glob("*.json"))]
+    guides.sort(key=lambda g: g["nation"])
+    refs_file = REFERENCE / "references.json"
+    refs = json.loads(refs_file.read_text(encoding="utf-8-sig")) if refs_file.exists() else []
+
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "reference").mkdir(exist_ok=True)
+    for r in refs:
+        src = REFERENCE / r["file"]
+        if not src.exists():
+            raise FileNotFoundError(f"reference/references.json lists {r['file']}, but the file is missing")
+        shutil.copyfile(src, out / "reference" / r["file"])
+
+    def embed(obj) -> str:
+        return json.dumps(obj, ensure_ascii=False).replace("</", "<\\/")
+
+    tpl = resources.files("eu4guide").joinpath("site.html").read_text(encoding="utf-8")
+    page = tpl.replace("/*GUIDES*/[]", embed(guides)).replace("<!--REFERENCE-->", reference_html(refs))
+    index = out / "index.html"
+    index.write_text(page, encoding="utf-8", newline="\n")
+    (out / ".nojekyll").write_text("")
+    return index

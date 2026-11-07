@@ -36,18 +36,18 @@ def cmd_run(a) -> None:
     from .generate import generate
     tl = cmd_timeline(a)
     js = generate(tl, a.nation, a.model)
-    html = guide.render(js)
-    print(f"Guide: {html}")
+    index = guide.build_site()
+    print(f"Guide: {js}\nSite: {index}")
     if not a.no_open:
-        webbrowser.open(html.resolve().as_uri())
+        webbrowser.open(index.resolve().as_uri() + f"#{js.stem}")
 
 
-def cmd_render(a) -> None:
-    paths = [Path(a.guide)] if a.guide else sorted(guide.GUIDES.glob("*.json"))
-    for p in paths:
-        print(f"Rendered {guide.render(p)}")
-    if a.open and paths:
-        webbrowser.open(paths[0].with_suffix(".html").resolve().as_uri())
+def cmd_build(a) -> None:
+    index = guide.build_site(Path(a.out))
+    n = len(list(guide.GUIDES.glob("*.json")))
+    print(f"Built {index} with {n} {'nation' if n == 1 else 'nations'}")
+    if a.open:
+        webbrowser.open(index.resolve().as_uri() + (f"#{a.open}" if isinstance(a.open, str) else ""))
 
 
 def cmd_frame(a) -> None:
@@ -80,10 +80,11 @@ def main() -> None:
     video_args(p)
     p.set_defaults(fn=cmd_timeline)
 
-    p = sub.add_parser("render", help="guides/<nation>.json -> HTML (all guides if none given)")
-    p.add_argument("guide", nargs="?")
-    p.add_argument("--open", action="store_true")
-    p.set_defaults(fn=cmd_render)
+    p = sub.add_parser("build", help="guides/*.json + reference/ -> static site in site/")
+    p.add_argument("--out", default="site")
+    p.add_argument("--open", nargs="?", const=True, metavar="SLUG",
+                   help="open the site in the browser, optionally on one nation's tab")
+    p.set_defaults(fn=cmd_build)
 
     p = sub.add_parser("frame", help="save one full frame, for checking the date box by hand")
     p.add_argument("video")

@@ -22,11 +22,13 @@ description: Turn an EU4 (Europa Universalis IV) YouTube guide into a dated play
 3. Write `guides/<nation-slug>.json` following the instructions. `uv run eu4guide schema` prints the
    exact format. The slug is lowercase with hyphens, like `papal-states` or `castile`.
 
-4. Render it and open it:
+4. Build the site and open it on the new nation's tab:
 
    ```
-   uv run eu4guide render guides/<nation-slug>.json --open
+   uv run eu4guide build --open <nation-slug>
    ```
+
+   Pushing the new JSON to main deploys it to https://salimmohamed.github.io/eu4-video-guides/.
 
 5. Tell the user how many phases and steps the guide has, and the date range it covers. Also mention
    anything you weren't sure about, such as names the captions garbled that you couldn't work out, or

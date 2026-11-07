@@ -1,0 +1,5 @@
+# downloaded videos, captions, frames and timelines: re-creatable, and other people's content
+videos/
+__pycache__/
+.venv/
+*.egg-info/

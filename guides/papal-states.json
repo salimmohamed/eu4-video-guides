@@ -1,0 +1,989 @@
+{
+  "nation": "Papal States",
+  "patch": "1.36",
+  "video": {
+    "id": "Znjk0jxVp9w",
+    "title": "EU4 1.36 The Papal State Guide - The Most UNDERRATED Nation For BLOBBING",
+    "channel": "The Red Hawk"
+  },
+  "summary": "EU4 1.36, 1444 to 1507.",
+  "phases": [
+    {
+      "name": "Day one setup",
+      "era": "11 Nov 1444",
+      "jump": "1444",
+      "intro": "Everything here happens before you unpause.",
+      "steps": [
+        {
+          "text": "Summon the Diet, pick whichever agenda suits you",
+          "note": "You start with 50% crownland",
+          "date": "Nov 1444",
+          "t": 180,
+          "wait": false
+        },
+        {
+          "text": "Clergy: Religious State, Clerical Advisory Council, Religious Diplomats, Clerical Education",
+          "note": "",
+          "date": "Nov 1444",
+          "t": 210,
+          "wait": false
+        },
+        {
+          "text": "Nobility: Primacy of the Nobility, Increased Levies, Aristocratic Counselors, Strong Duchies, Integration Policy",
+          "note": "Done in advance so subjects annex cheaply later",
+          "date": "Nov 1444",
+          "t": 210,
+          "wait": false
+        },
+        {
+          "text": "Burghers: Land of Commerce, Patronage of the Arts, Commercial Advisory Board, Indebted to the Burghers",
+          "note": "",
+          "date": "Nov 1444",
+          "t": 210,
+          "wait": false
+        },
+        {
+          "text": "Seize land instead of selling titles",
+          "note": "Money is not a problem as the Pope",
+          "date": "Nov 1444",
+          "t": 240,
+          "wait": false
+        },
+        {
+          "text": "Rival Provence and one other (he picks Savoy)",
+          "note": "Keep the third rival slot empty for Naples",
+          "date": "Nov 1444",
+          "t": 240,
+          "wait": false
+        },
+        {
+          "text": "Hire a level 1 admin advisor (inflation reduction)",
+          "note": "",
+          "date": "Nov 1444",
+          "t": 270,
+          "wait": false
+        },
+        {
+          "text": "Hire a level 1 diplo advisor (improve relations or diplo rep)",
+          "note": "",
+          "date": "Nov 1444",
+          "t": 290,
+          "wait": false
+        },
+        {
+          "text": "Hire a level 1 mil advisor (discipline, morale, fort defense or manpower)",
+          "note": "",
+          "date": "Nov 1444",
+          "t": 300,
+          "wait": false
+        },
+        {
+          "text": "Ally Austria first",
+          "note": "Helps against HRE minors, or lets you join the HRE",
+          "date": "Nov 1444",
+          "t": 305,
+          "wait": false
+        },
+        {
+          "text": "Ally Milan (a northern neighbour you won't fight soon)",
+          "note": "Next day, once relations allow",
+          "date": "Nov 1444",
+          "t": 330,
+          "wait": false
+        },
+        {
+          "text": "Improve relations with France, then ally them",
+          "note": "Castile if France won't. France is slightly better",
+          "date": "Nov 1444",
+          "t": 340,
+          "wait": false
+        },
+        {
+          "text": "Scornfully insult Naples",
+          "note": "Sets up excommunicating them later",
+          "date": "Nov 1444",
+          "t": 360,
+          "wait": false
+        },
+        {
+          "text": "Last diplomat: build a spy network on Aragon",
+          "note": "For claims on Naples",
+          "date": "Nov 1444",
+          "t": 365,
+          "wait": false
+        },
+        {
+          "text": "Light ships: Protect Trade in Genoa, go home during war",
+          "note": "",
+          "date": "Nov 1444",
+          "t": 370,
+          "wait": false
+        },
+        {
+          "text": "Queue about 5 light ships and 10 galleys",
+          "note": "",
+          "date": "Nov 1444",
+          "t": 380,
+          "wait": false
+        },
+        {
+          "text": "Lower army maintenance, turn off forts",
+          "note": "",
+          "date": "Nov 1444",
+          "t": 390,
+          "wait": false
+        },
+        {
+          "text": "Set subjects to Siege",
+          "note": "",
+          "date": "Nov 1444",
+          "t": 395,
+          "wait": false
+        },
+        {
+          "text": "Golden Bull: take the -5% stability cost bull now",
+          "note": "Or wait for the Renaissance bull if you want to help other Catholics",
+          "date": "26 Nov 1444",
+          "t": 410,
+          "wait": false
+        },
+        {
+          "text": "Move Alexandria and Valencia merchants to collect in Genoa and Venice",
+          "note": "",
+          "date": "26 Nov 1444",
+          "t": 425,
+          "wait": false
+        },
+        {
+          "text": "Set those merchants to Establish Communities",
+          "note": "Lowers aggressive expansion",
+          "date": "26 Nov 1444",
+          "t": 435,
+          "wait": false
+        }
+      ]
+    },
+    {
+      "name": "First years and missions",
+      "era": "Dec 1444 to 1450",
+      "jump": "1445",
+      "intro": "Waiting on Aragon to free Naples and France to drop Provence. Use the time on missions.",
+      "steps": [
+        {
+          "text": "Spare diplomats: improve relations with subjects and allies",
+          "note": "",
+          "date": "Dec 1444",
+          "t": 455,
+          "wait": false
+        },
+        {
+          "text": "Ally France, accept their call into the England war",
+          "note": "You won't actually do anything there",
+          "date": "Sep 1445",
+          "t": 470,
+          "wait": false
+        },
+        {
+          "text": "Catholic Conformity mission once you have 3 allies",
+          "note": "+100 diplo",
+          "date": "Sep 1445",
+          "t": 490,
+          "wait": false
+        },
+        {
+          "text": "Improve Lithuania to 100, take their mission",
+          "note": "They convert their Orthodox provinces, you get devotion",
+          "date": "Nov 1446",
+          "t": 510,
+          "wait": false
+        },
+        {
+          "text": "Scornfully insult a Swiss rival, max relations with Switzerland",
+          "note": "",
+          "date": "Nov 1446",
+          "t": 525,
+          "wait": false
+        },
+        {
+          "text": "Form the Swiss Guard mission",
+          "note": "+10% merc discipline for 20 years, Papal Swiss Guard costs no professionalism",
+          "date": "1448",
+          "t": 535,
+          "wait": false
+        },
+        {
+          "text": "Renaissance spawns in 1450: Encourage Development edict in Lazio",
+          "note": "Whether or not it spawned on you",
+          "date": "1 Jan 1450",
+          "t": 545,
+          "wait": false
+        },
+        {
+          "text": "Expand infrastructure and develop Rome to 30",
+          "note": "Age objective, and speeds up the Renaissance",
+          "date": "1 Jan 1450",
+          "t": 555,
+          "wait": false
+        }
+      ]
+    },
+    {
+      "name": "First war: Naples",
+      "era": "Aug 1450 to Oct 1452",
+      "jump": "1450",
+      "intro": "Naples is free and borders you, with few or no allies. This war should be very easy.",
+      "steps": [
+        {
+          "text": "Aragon's ruler dies and Naples is released",
+          "note": "Usually by 1450. He has only seen it not happen once",
+          "date": "25 Aug 1450",
+          "t": 575,
+          "wait": true
+        },
+        {
+          "text": "Aragon event: choose option 2 (subjugation CB)",
+          "note": "Don't use that CB. Subjugation forces vassalization and costs too much AE",
+          "date": "25 Aug 1450",
+          "t": 600,
+          "wait": false
+        },
+        {
+          "text": "No claim on Naples yet? Spy on them now",
+          "note": "",
+          "date": "25 Aug 1450",
+          "t": 630,
+          "wait": false
+        },
+        {
+          "text": "Rival Naples with the empty slot",
+          "note": "",
+          "date": "25 Aug 1450",
+          "t": 640,
+          "wait": false
+        },
+        {
+          "text": "Once they rival back, excommunicate Naples if you can",
+          "note": "Blocked if they bought Indulgence or you like them too much",
+          "date": "25 Aug 1450",
+          "t": 650,
+          "wait": false
+        },
+        {
+          "text": "Raise army maintenance, take loans if needed",
+          "note": "",
+          "date": "1 Jan 1451",
+          "t": 690,
+          "wait": false
+        },
+        {
+          "text": "Hire the Papal Swiss Guard mercenaries",
+          "note": "",
+          "date": "1 Jan 1451",
+          "t": 700,
+          "wait": false
+        },
+        {
+          "text": "Take the mission that gives a 62-tradition general",
+          "note": "Unlocks once you hire mercs, so skip recruiting a general",
+          "date": "Apr 1451",
+          "t": 720,
+          "wait": false
+        },
+        {
+          "text": "Declare with Excommunicated Ruler CB, else Conquest. Call Milan",
+          "note": "",
+          "date": "Apr 1451",
+          "t": 735,
+          "wait": false
+        },
+        {
+          "text": "Peace at about 40 AE",
+          "note": "Excom CB: the bigger chunk plus money and war reparations. Conquest CB: 3 provinces, no money, so the truce ends sooner",
+          "date": "6 Oct 1452",
+          "t": 750,
+          "wait": false
+        },
+        {
+          "text": "Meanwhile, start a spy network on Provence",
+          "note": "",
+          "date": "1 Jan 1451",
+          "t": 700,
+          "wait": false
+        }
+      ]
+    },
+    {
+      "name": "Second war: Provence",
+      "era": "Oct 1452 to Oct 1456",
+      "jump": "1452",
+      "intro": "France always drops Provence after their war with England. Provence is left with weak allies.",
+      "steps": [
+        {
+          "text": "France has broken its alliance with Provence",
+          "note": "Check right after Naples peace",
+          "date": "Oct 1452",
+          "t": 790,
+          "wait": true
+        },
+        {
+          "text": "Check Provence's allies are weak, and if you can excommunicate them",
+          "note": "",
+          "date": "Oct 1452",
+          "t": 810,
+          "wait": false
+        },
+        {
+          "text": "Tier 2 reform: Commercial, Protection or External Mission",
+          "note": "Money run: Commercial. Crusades: Protection. Conquering Europe: External",
+          "date": "Oct 1452",
+          "t": 840,
+          "wait": false
+        },
+        {
+          "text": "If Commercial: new merchant in Valencia, transfer to Genoa",
+          "note": "",
+          "date": "Oct 1452",
+          "t": 880,
+          "wait": false
+        },
+        {
+          "text": "Diplomats improve relations with countries you've angered",
+          "note": "",
+          "date": "Oct 1452",
+          "t": 885,
+          "wait": false
+        },
+        {
+          "text": "Excommunicate any bordering target as soon as Papal Actions allows",
+          "note": "Halves AE on bordering provinces. He finally gets Naples here",
+          "date": "Nov 1452",
+          "t": 910,
+          "wait": false
+        },
+        {
+          "text": "Core the Naples provinces before declaring",
+          "note": "",
+          "date": "1454",
+          "t": 930,
+          "wait": false
+        },
+        {
+          "text": "Get military access from France and move your army to Avignon",
+          "note": "",
+          "date": "Jun 1454",
+          "t": 935,
+          "wait": false
+        },
+        {
+          "text": "Declare (Excom or Conquest), call Milan and Austria",
+          "note": "",
+          "date": "Dec 1454",
+          "t": 960,
+          "wait": false
+        },
+        {
+          "text": "Peace: 3 southern provinces, humiliate if still rivals, money",
+          "note": "",
+          "date": "Oct 1456",
+          "t": 985,
+          "wait": false
+        }
+      ]
+    },
+    {
+      "name": "Consolidate",
+      "era": "1456 to 1462",
+      "jump": "1456",
+      "intro": "Take a 2 to 3 year breather. Your two openers are done.",
+      "steps": [
+        {
+          "text": "Annex Perugia and Urbino",
+          "note": "",
+          "date": "Oct 1456",
+          "t": 1030,
+          "wait": false
+        },
+        {
+          "text": "New loans, embrace the Renaissance",
+          "note": "",
+          "date": "1 Jan 1457",
+          "t": 1050,
+          "wait": false
+        },
+        {
+          "text": "Vatican Library mission",
+          "note": "Admin tech or army tradition option is slightly better. He takes army tradition",
+          "date": "1 Jan 1457",
+          "t": 1060,
+          "wait": false
+        },
+        {
+          "text": "Pay off the first burgher loans, take new ones",
+          "note": "",
+          "date": "Jul 1458",
+          "t": 1085,
+          "wait": false
+        },
+        {
+          "text": "Marketplaces in centers of trade and estuaries (Rome, Urbino, Naples, Aix)",
+          "note": "",
+          "date": "Jul 1458",
+          "t": 1095,
+          "wait": false
+        },
+        {
+          "text": "Churches once marketplaces are built",
+          "note": "",
+          "date": "Dec 1458",
+          "t": 1115,
+          "wait": false
+        },
+        {
+          "text": "Seize land whenever estates are above 50 loyalty",
+          "note": "Keep crownland above 30%",
+          "date": "Dec 1458",
+          "t": 1120,
+          "wait": false
+        },
+        {
+          "text": "Italian minors in the HRE: join the HRE if you're done early (~1452), or wait",
+          "note": "They leave around 1462",
+          "date": "Dec 1458",
+          "t": 1130,
+          "wait": false
+        },
+        {
+          "text": "Periodically excommunicate anyone you might fight",
+          "note": "He gets Venice",
+          "date": "Apr 1461",
+          "t": 1170,
+          "wait": false
+        },
+        {
+          "text": "Admin tech 5: Quality ideas",
+          "note": "",
+          "date": "Apr 1461",
+          "t": 1185,
+          "wait": false
+        },
+        {
+          "text": "Naval doctrine: galley combat ability",
+          "note": "",
+          "date": "Jul 1462",
+          "t": 1205,
+          "wait": false
+        }
+      ]
+    },
+    {
+      "name": "Northern Italy and Naples again",
+      "era": "1462 to 1474",
+      "jump": "1462",
+      "intro": "No strict order from here. Fight whoever is easiest, always with the excommunication CB if you can.",
+      "steps": [
+        {
+          "text": "The Italian minors leave the HRE",
+          "note": "",
+          "date": "Jul 1462",
+          "t": 1210,
+          "wait": true
+        },
+        {
+          "text": "Second Naples war when the truce ends",
+          "note": "Only if they're still independent. Excom CB, Conquest, or subjugation",
+          "date": "Aug 1462",
+          "t": 1230,
+          "wait": false
+        },
+        {
+          "text": "Take a few provinces and vassalize Naples, plus their money",
+          "note": "You'll feed them their Sicily cores later. Never conquer Sicily yourself",
+          "date": "Dec 1463",
+          "t": 1265,
+          "wait": false
+        },
+        {
+          "text": "Spy networks and claims on Siena, Florence, Savoy, Genoa",
+          "note": "Lower autonomy from time to time",
+          "date": "Apr 1464",
+          "t": 1325,
+          "wait": false
+        },
+        {
+          "text": "Government ability: Justified Wars",
+          "note": "",
+          "date": "Apr 1464",
+          "t": 1330,
+          "wait": false
+        },
+        {
+          "text": "War on Siena with Milan, full annex",
+          "note": "",
+          "date": "Dec 1465",
+          "t": 1350,
+          "wait": false
+        },
+        {
+          "text": "Tier 3 reform: Education of the Court",
+          "note": "Advisor discount stacks with the curia's",
+          "date": "May 1466",
+          "t": 1385,
+          "wait": false
+        },
+        {
+          "text": "Diplo-vassalize 1 or 2 province minors (Bologna, Corsica, Lucca, Saluzzo)",
+          "note": "Use the offer-vassalization list to see who will accept",
+          "date": "Jun 1469",
+          "t": 1450,
+          "wait": false
+        },
+        {
+          "text": "Get them to 190 opinion: ally, guarantee, gift, mil access, influence, subsidies, Appoint Cardinal",
+          "note": "Cardinal gives +50 opinion and is underrated",
+          "date": "Jun 1469",
+          "t": 1505,
+          "wait": false
+        },
+        {
+          "text": "Venice war while the Ottomans fight them (or with Austria)",
+          "note": "Excommunicate first if you border them. Call Milan",
+          "date": "Aug 1470",
+          "t": 1540,
+          "wait": false
+        },
+        {
+          "text": "Build Your Own Navy mission once you have the boats",
+          "note": "",
+          "date": "Aug 1470",
+          "t": 1575,
+          "wait": false
+        },
+        {
+          "text": "Admin tech 6: workshops in high-value goods provinces",
+          "note": "",
+          "date": "Feb 1473",
+          "t": 1590,
+          "wait": false
+        },
+        {
+          "text": "Venice peace: Istria, Zara, Spalato, Padua, Verona",
+          "note": "About 30 AE, no money so the truce ends faster",
+          "date": "Feb 1473",
+          "t": 1605,
+          "wait": false
+        },
+        {
+          "text": "Release Dalmatia as your subject",
+          "note": "Strong trade, army and navy ideas",
+          "date": "Feb 1473",
+          "t": 1630,
+          "wait": false
+        },
+        {
+          "text": "With more than 2 subjects: Strong Duchies and Integration Policy",
+          "note": "",
+          "date": "Mar 1473",
+          "t": 1655,
+          "wait": false
+        },
+        {
+          "text": "Break the alliance with Milan once you border them",
+          "note": "",
+          "date": "Jul 1474",
+          "t": 1680,
+          "wait": false
+        }
+      ]
+    },
+    {
+      "name": "Aragon",
+      "era": "1474 to 1481",
+      "jump": "1474",
+      "intro": "Optional, and only when Aragon is fighting someone else. In his game Castile and France were beating them.",
+      "steps": [
+        {
+          "text": "Aragon is weak or at war with bigger powers",
+          "note": "",
+          "date": "Jul 1474",
+          "t": 1690,
+          "wait": true
+        },
+        {
+          "text": "Declare on Aragon (he uses reconquest of Messina)",
+          "note": "",
+          "date": "Jul 1474",
+          "t": 1715,
+          "wait": false
+        },
+        {
+          "text": "Peace: Sicily cores to Naples, or one province to release Sicily",
+          "note": "",
+          "date": "Jul 1478",
+          "t": 1745,
+          "wait": false
+        },
+        {
+          "text": "Take all of Sardinia",
+          "note": "",
+          "date": "Jul 1478",
+          "t": 1755,
+          "wait": false
+        },
+        {
+          "text": "One province to release Catalonia, one to release Valencia",
+          "note": "",
+          "date": "Jul 1478",
+          "t": 1765,
+          "wait": false
+        },
+        {
+          "text": "Use favors with France to return your subjects' cores",
+          "note": "Gerona in Nov 1479, Roussillon in Mar 1481",
+          "date": "Nov 1479",
+          "t": 1860,
+          "wait": false
+        }
+      ]
+    },
+    {
+      "name": "Economy and midgame",
+      "era": "1478 to 1497",
+      "jump": "1478",
+      "intro": "Expand and build at the same time. Benchmark: about 27 ducats a month in 1480 with armies and forts up.",
+      "steps": [
+        {
+          "text": "Rebuild the Papal Treasury, then Restore Curia Funding",
+          "note": "Once loans are paid off",
+          "date": "Aug 1478",
+          "t": 1810,
+          "wait": false
+        },
+        {
+          "text": "Admin tech 7: Trade ideas (Europe) or Religious (crusades)",
+          "note": "",
+          "date": "Aug 1478",
+          "t": 1820,
+          "wait": false
+        },
+        {
+          "text": "Annex diplo-vassals after 10 years. Lower autonomy",
+          "note": "",
+          "date": "Nov 1479",
+          "t": 1870,
+          "wait": false
+        },
+        {
+          "text": "Tier 4 reform: Head of the Catholic Church",
+          "note": "",
+          "date": "Aug 1480",
+          "t": 1910,
+          "wait": false
+        },
+        {
+          "text": "Mop up the minors left in the north (he annexes Ferrara)",
+          "note": "",
+          "date": "Mar 1481",
+          "t": 1935,
+          "wait": false
+        },
+        {
+          "text": "Patrimony of St Peter mission (6 provinces in Marche and Emilia-Romagna)",
+          "note": "Permanent claims on Tuscany, Liguria, Piedmont",
+          "date": "Oct 1482",
+          "t": 1955,
+          "wait": false
+        },
+        {
+          "text": "Keep taking new burgher loans, upgrade centers of trade",
+          "note": "",
+          "date": "Oct 1482",
+          "t": 1965,
+          "wait": false
+        },
+        {
+          "text": "Annex Naples once you've handed them all their cores",
+          "note": "",
+          "date": "Nov 1483",
+          "t": 1985,
+          "wait": false
+        },
+        {
+          "text": "Prospering Times event: option 2 (new center of trade)",
+          "note": "Trade power went from 0.9 to 14.5 for him",
+          "date": "Nov 1483",
+          "t": 1990,
+          "wait": false
+        },
+        {
+          "text": "Venice again when the truce ends, with Austria",
+          "note": "He uses Dalmatia's claims",
+          "date": "May 1484",
+          "t": 2015,
+          "wait": false
+        },
+        {
+          "text": "Optional: hit Castile when France attacks them, for Valencia's cores",
+          "note": "",
+          "date": "Sep 1487",
+          "t": 2055,
+          "wait": false
+        },
+        {
+          "text": "Start St Peter's Basilica once you have 1,000 ducats",
+          "note": "Get it to tier 1 before the commissioning event, which bumps it a tier",
+          "date": "Mar 1490",
+          "t": 2105,
+          "wait": false
+        },
+        {
+          "text": "Full-state everything you get from subjects",
+          "note": "",
+          "date": "Mar 1490",
+          "t": 2110,
+          "wait": false
+        },
+        {
+          "text": "Take admin tech 8 a bit early: courthouses everywhere, in subjects too",
+          "note": "Fixes governing capacity",
+          "date": "Aug 1490",
+          "t": 2130,
+          "wait": false
+        },
+        {
+          "text": "Switch to level 2 advisors",
+          "note": "",
+          "date": "Aug 1490",
+          "t": 2150,
+          "wait": false
+        },
+        {
+          "text": "Florence: full annex is fine now",
+          "note": "Few Italians left and none in the HRE, so no coalition",
+          "date": "May 1493",
+          "t": 2175,
+          "wait": false
+        },
+        {
+          "text": "Radical Reforms event: fire both advisors, take the points, rehire",
+          "note": "",
+          "date": "May 1493",
+          "t": 2165,
+          "wait": false
+        },
+        {
+          "text": "Full annex Savoy",
+          "note": "",
+          "date": "May 1496",
+          "t": 2225,
+          "wait": false
+        },
+        {
+          "text": "Quality and Trade done: +15% trade efficiency policy",
+          "note": "",
+          "date": "May 1496",
+          "t": 2235,
+          "wait": false
+        },
+        {
+          "text": "1 to 3 nations left in Italy: merchants back to Maximize Profit and reposition",
+          "note": "",
+          "date": "Feb 1497",
+          "t": 2245,
+          "wait": false
+        },
+        {
+          "text": "Crush the Italian Cities mission (9 provinces in Tuscany, Liguria, Piedmont)",
+          "note": "Claims on Venetia, Lombardy, Po",
+          "date": "Feb 1497",
+          "t": 2260,
+          "wait": false
+        },
+        {
+          "text": "Annex Italian vassals. Keep Dalmatia, Valencia and Catalonia",
+          "note": "",
+          "date": "Mar 1497",
+          "t": 2295,
+          "wait": false
+        },
+        {
+          "text": "Tier 5 reform",
+          "note": "",
+          "date": "Mar 1497",
+          "t": 2305,
+          "wait": false
+        }
+      ]
+    },
+    {
+      "name": "Finish Italy",
+      "era": "1501 to 1507",
+      "jump": "1501",
+      "intro": "Milan is usually the biggest one left, since you allied them early.",
+      "steps": [
+        {
+          "text": "Milan in about 3 wars, first for Genoa (5 provinces)",
+          "note": "",
+          "date": "Apr 1502",
+          "t": 2340,
+          "wait": false
+        },
+        {
+          "text": "Conquer Trent",
+          "note": "Needed for the Kingdom of God",
+          "date": "1507",
+          "t": 2520,
+          "wait": false
+        },
+        {
+          "text": "Keep the stronger of France and Austria, break with the other",
+          "note": "Use one to beat the other, then turn on the first",
+          "date": "Nov 1505",
+          "t": 2385,
+          "wait": false
+        },
+        {
+          "text": "Subjects divert trade when they're loyal",
+          "note": "",
+          "date": "Nov 1505",
+          "t": 2405,
+          "wait": false
+        },
+        {
+          "text": "Become Defender of the Faith",
+          "note": "",
+          "date": "Nov 1505",
+          "t": 2420,
+          "wait": false
+        },
+        {
+          "text": "Declare the Kingdom of God",
+          "note": "",
+          "date": "1507",
+          "t": 2550,
+          "wait": false
+        }
+      ]
+    },
+    {
+      "name": "1507 benchmarks",
+      "era": "Check your game",
+      "jump": "1507",
+      "intro": "What his game looked like when colonialism spawned.",
+      "steps": [
+        {
+          "text": "About 66 ducats a month, no loans, no inflation",
+          "note": "",
+          "date": "Mar 1507",
+          "t": 2655,
+          "wait": false
+        },
+        {
+          "text": "Level 3 advisors",
+          "note": "",
+          "date": "Apr 1507",
+          "t": 2670,
+          "wait": false
+        },
+        {
+          "text": "Courthouses, workshops, churches and marketplaces built",
+          "note": "",
+          "date": "Apr 1507",
+          "t": 2680,
+          "wait": false
+        },
+        {
+          "text": "Every center of trade at level 2",
+          "note": "",
+          "date": "Apr 1507",
+          "t": 2705,
+          "wait": false
+        },
+        {
+          "text": "Two full stacks at combat width",
+          "note": "",
+          "date": "Apr 1507",
+          "t": 2750,
+          "wait": false
+        },
+        {
+          "text": "Main fleet of about 21 galleys and 10 transports, plus trade fleets in Genoa and Venice",
+          "note": "Later Valencia and Ragusa",
+          "date": "Apr 1507",
+          "t": 2765,
+          "wait": false
+        },
+        {
+          "text": "Great projects: St Peter's, Santa Maria del Fiore, Duomo di Milano, Doge's Palace, Caserta",
+          "note": "",
+          "date": "Apr 1507",
+          "t": 2710,
+          "wait": false
+        }
+      ]
+    },
+    {
+      "name": "Later picks",
+      "era": "After 1507",
+      "jump": "Later",
+      "intro": "Goal by 1550 to 1560: own the Valencia, Genoa, Venice and Ragusa trade nodes.",
+      "steps": [
+        {
+          "text": "Idea 3: Quantity",
+          "note": "",
+          "date": "1507",
+          "t": 2780,
+          "wait": false
+        },
+        {
+          "text": "Idea 4: whichever of Trade or Religious you skipped",
+          "note": "Tall in Italy: Economic or Infrastructure instead",
+          "date": "1507",
+          "t": 2810,
+          "wait": false
+        },
+        {
+          "text": "Tier 6 reform: Battle Pope",
+          "note": "",
+          "date": "1507",
+          "t": 2850,
+          "wait": false
+        },
+        {
+          "text": "Tier 7: Divine Nobility (army) or Mercantile Tithe (money)",
+          "note": "",
+          "date": "1507",
+          "t": 2860,
+          "wait": false
+        },
+        {
+          "text": "Tier 8: Empower the Burghers or Embrace Economic Theory",
+          "note": "",
+          "date": "1507",
+          "t": 2865,
+          "wait": false
+        },
+        {
+          "text": "Tier 9: Combat Heresy. Tier 11: Church and State. Tier 12: Religious Society",
+          "note": "",
+          "date": "1507",
+          "t": 2875,
+          "wait": false
+        },
+        {
+          "text": "Tier 13: One State Under God or Global Crusade",
+          "note": "",
+          "date": "1507",
+          "t": 2885,
+          "wait": false
+        },
+        {
+          "text": "Pick a path: Europe, crusades into North Africa and the Levant, or colonizing",
+          "note": "",
+          "date": "1507",
+          "t": 2620,
+          "wait": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+[project]
+name = "eu4-video-guides"
+version = "0.1.0"
+description = "Turn Europa Universalis IV YouTube guides into dated, checkable playbooks"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = [
+    "yt-dlp",
+    "rapidocr-onnxruntime",
+]
+
+[project.optional-dependencies]
+ai = ["anthropic"]
+
+[project.scripts]
+eu4guide = "eu4guide.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["eu4guide"]

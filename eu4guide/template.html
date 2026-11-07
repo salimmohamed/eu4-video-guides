@@ -1,0 +1,162 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>__TITLE__</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: one reading column; sticky progress bar + era jump row; each step carries its in-game date and a video link */
+:root{
+  --bg:#f3f2ef; --surface:#ffffff; --fg:#22201f; --muted:#6b6560; --line:#dcd8d2;
+  --accent:#8e1b24; --gold:#8a6a1f; --wait:#2f5d7c; --wait-bg:#e6eef4; --done:#8a857f;
+  --display:"Cinzel",Georgia,serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#17161a; --surface:#211f24; --fg:#ece8e3; --muted:#a39d96; --line:#36333a;
+  --accent:#e0676f; --gold:#d6ad55; --wait:#8cbad8; --wait-bg:#1f2a33; --done:#7c7680; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17161a; --surface:#211f24; --fg:#ece8e3; --muted:#a39d96; --line:#36333a;
+  --accent:#e0676f; --gold:#d6ad55; --wait:#8cbad8; --wait-bg:#1f2a33; --done:#7c7680; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:760px;margin:0 auto;padding-block:28px 64px}
+header h1{font-family:var(--display);font-size:1.9rem;letter-spacing:.02em;margin:0;text-wrap:balance;color:var(--accent)}
+header p{margin:.35rem 0 0;color:var(--muted);max-width:62ch}
+header a{color:inherit}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding-block:14px 10px;border-bottom:1px solid var(--line);margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.track{flex:1 1 200px;height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.fill{height:100%;width:0;background:var(--gold);transition:width .25s}
+.count{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.85rem;color:var(--muted)}
+nav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px}
+nav a{flex:none;font:500 .75rem var(--mono);color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:3px 9px;font-variant-numeric:tabular-nums}
+nav a:hover,nav a:focus-visible{color:var(--fg);border-color:var(--muted)}
+nav a.full{color:var(--done);text-decoration:line-through}
+button{font:500 .85rem var(--body);background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:6px 10px;cursor:pointer}
+button:hover{border-color:var(--muted)}
+button:focus-visible,a:focus-visible,input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+button.danger{color:var(--accent);border-color:var(--accent)}
+#confirm{display:flex;gap:8px;align-items:center;font-size:.85rem}
+section{margin-top:30px;scroll-margin-top:120px}
+section h2{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 4px;font-family:var(--display);font-size:1.1rem;letter-spacing:.03em}
+section h2 .count{font-size:.8rem}
+.era{font:600 .75rem var(--mono);letter-spacing:.06em;color:var(--gold);margin-bottom:4px}
+.intro{margin:0 0 8px;color:var(--muted);font-size:.88rem;max-width:65ch}
+ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+li{border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:flex-start}
+li.w{background:var(--wait-bg)}
+label{flex:1;min-width:0;display:flex;gap:12px;align-items:flex-start;padding:9px 2px;cursor:pointer}
+input{position:absolute;opacity:0;width:1px;height:1px}
+.box{flex:none;width:18px;height:18px;margin-top:2px;border:1.5px solid var(--muted);border-radius:4px;display:grid;place-items:center}
+li.w .box,.box.round{border-radius:50%;border-color:var(--wait)}
+input:checked+.box{background:var(--accent);border-color:var(--accent)}
+li.w input:checked+.box{background:var(--wait);border-color:var(--wait)}
+input:checked+.box::after{content:"";width:5px;height:9px;border:solid var(--surface);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.t{min-width:0}
+.tag{font:600 .68rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--wait);margin-right:6px}
+input:checked~.t{color:var(--done);text-decoration:line-through;text-decoration-color:var(--line)}
+.note{display:block;font-size:.82rem;color:var(--muted)}
+input:checked~.t .note,input:checked~.t .tag{color:var(--done)}
+.when{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:1px;padding:9px 2px 9px 0;text-align:right}
+.when .d{font:500 .75rem var(--mono);color:var(--gold);font-variant-numeric:tabular-nums;white-space:nowrap}
+.when a{font:500 .72rem var(--mono);color:var(--muted);text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums}
+.when a:hover{color:var(--accent);text-decoration:underline}
+.hide-done li.is-done{display:none}
+footer{margin-top:36px;font-size:.8rem;color:var(--muted)}
+@media (max-width:480px){.when .d{font-size:.7rem}}
+@media (prefers-reduced-motion:reduce){.fill{transition:none}}
+@media print{
+  :root{--bg:#fff;--fg:#000;--muted:#444;--line:#bbb;--wait-bg:#eef3f7;color-scheme:light}
+  .bar,footer{display:none}
+  body{font-size:11pt}
+  section{break-inside:auto;margin-top:18px}
+  li{break-inside:avoid}
+  .when a{color:var(--muted)}
+}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <h1 id="title"></h1>
+    <p id="sub"></p>
+    <div class="legend">
+      <span><span class="box" aria-hidden="true"></span>Do it</span>
+      <span><span class="box round" aria-hidden="true"></span>Wait for this to happen</span>
+      <span><span style="font-family:var(--mono);color:var(--gold)">Nov 1444</span>date on screen in the video</span>
+    </div>
+  </header>
+  <div class="bar">
+    <div class="row">
+      <div class="track"><div class="fill" id="fill"></div></div>
+      <span class="count" id="total">0 / 0</span>
+      <button id="toggleDone" type="button">Hide done</button>
+      <button id="reset" type="button">Reset</button>
+      <span id="confirm" hidden>Clear every tick? <button class="danger" id="yes" type="button">Clear</button><button id="no" type="button">Cancel</button></span>
+    </div>
+    <nav id="nav" aria-label="Jump to era"></nav>
+  </div>
+  <main id="list"></main>
+  <footer>Dates are read off the in-game clock in the video. Your timing will drift a few years depending on events and alliances in your game. Ticks are saved in this browser only.</footer>
+</div>
+<script>
+const G=/*GUIDE*/null;
+const el=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e};
+const ts=s=>s>=3600?`${Math.floor(s/3600)}:${String(Math.floor(s%3600/60)).padStart(2,"0")}:${String(s%60).padStart(2,"0")}`:`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
+const V=G.video.id;
+document.getElementById("title").textContent=`${G.nation} Playbook`;
+const sub=document.getElementById("sub");
+sub.append(`${G.summary} From `);
+const src=el("a",null,`${G.video.channel ? G.video.channel+"'s" : "the"} ${G.nation} guide`);
+src.href=`https://youtu.be/${V}`;src.target="_blank";src.rel="noopener";
+sub.append(src,". Each step shows the in-game date it happened in the video and links to that moment.");
+
+const KEY=`eu4-guide-${G.nation.toLowerCase().replace(/\W+/g,"-")}-v1`;
+let state={};try{state=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};
+const list=document.getElementById("list"),nav=document.getElementById("nav");
+G.phases.forEach((p,pi)=>{
+  const s=el("section");s.id=`era${pi}`;
+  s.append(el("div","era",p.era));
+  const h2=el("h2");h2.append(el("span",null,p.name));const c=el("span","count");c.dataset.c=pi;h2.append(c);s.append(h2);
+  if(p.intro)s.append(el("p","intro",p.intro));
+  const a=el("a",null,p.jump);a.href=`#era${pi}`;a.title=p.name;a.dataset.n=pi;
+  a.onclick=ev=>{ev.preventDefault();s.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"})};
+  nav.append(a);
+  const ul=el("ul");
+  p.steps.forEach((st,ii)=>{
+    const id=`c${pi}-${ii}`,li=el("li",st.wait?"w":null);
+    const lab=el("label");lab.htmlFor=id;
+    const cb=el("input");cb.type="checkbox";cb.id=id;
+    const t=el("span","t");
+    if(st.wait)t.append(el("span","tag","Wait for"));
+    t.append(st.text);
+    if(st.note)t.append(el("span","note",st.note));
+    lab.append(cb,el("span","box"),t);
+    const w=el("span","when");w.append(el("span","d",st.date));
+    const v=el("a",null,`▶ ${ts(st.t)}`);v.href=`https://youtu.be/${V}?t=${st.t}`;v.target="_blank";v.rel="noopener";v.setAttribute("aria-label",`Watch at ${ts(st.t)}`);
+    w.append(v);li.append(lab,w);
+    cb.checked=!!state[id];li.classList.toggle("is-done",cb.checked);
+    cb.addEventListener("change",()=>{state[id]=cb.checked;li.classList.toggle("is-done",cb.checked);save();update()});
+    ul.append(li);
+  });
+  s.append(ul);list.append(s);
+});
+function update(){
+  let all=0,done=0;
+  G.phases.forEach((p,pi)=>{let d=0;p.steps.forEach((_,ii)=>{if(state[`c${pi}-${ii}`])d++});all+=p.steps.length;done+=d;
+    document.querySelector(`[data-c="${pi}"]`).textContent=`${d} / ${p.steps.length}`;
+    nav.querySelector(`[data-n="${pi}"]`).classList.toggle("full",d===p.steps.length)});
+  document.getElementById("total").textContent=`${done} / ${all}`;
+  document.getElementById("fill").style.width=(all?done/all*100:0)+"%";
+}
+update();
+const tg=document.getElementById("toggleDone");
+tg.onclick=()=>{const on=document.body.classList.toggle("hide-done");tg.textContent=on?"Show done":"Hide done"};
+const rs=document.getElementById("reset"),cf=document.getElementById("confirm");
+rs.onclick=()=>{cf.hidden=false;rs.hidden=true};
+document.getElementById("no").onclick=()=>{cf.hidden=true;rs.hidden=false};
+document.getElementById("yes").onclick=()=>{state={};save();document.querySelectorAll("input").forEach(c=>{c.checked=false;c.closest("li").classList.remove("is-done")});update();cf.hidden=true;rs.hidden=false};
+</script>
+</body></html>

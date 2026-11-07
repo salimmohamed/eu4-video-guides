@@ -7,15 +7,16 @@
 :root{
   --bg:#f3f2ef; --surface:#ffffff; --fg:#22201f; --muted:#6b6560; --line:#dcd8d2;
   --accent:#8e1b24; --gold:#8a6a1f; --wait:#2f5d7c; --wait-bg:#e6eef4; --done:#8a857f;
+  --card:#ebe8e3; --card-line:#d3cec6;
   --display:"Cinzel",Georgia,serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#17161a; --surface:#211f24; --fg:#ece8e3; --muted:#a39d96; --line:#36333a;
-  --accent:#e0676f; --gold:#d6ad55; --wait:#8cbad8; --wait-bg:#1f2a33; --done:#7c7680; color-scheme:dark}}
+  --accent:#e0676f; --gold:#d6ad55; --wait:#8cbad8; --wait-bg:#1f2a33; --done:#7c7680; --card:#201e24; --card-line:#3a3640; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#17161a; --surface:#211f24; --fg:#ece8e3; --muted:#a39d96; --line:#36333a;
-  --accent:#e0676f; --gold:#d6ad55; --wait:#8cbad8; --wait-bg:#1f2a33; --done:#7c7680; color-scheme:dark}
+  --accent:#e0676f; --gold:#d6ad55; --wait:#8cbad8; --wait-bg:#1f2a33; --done:#7c7680; --card:#201e24; --card-line:#3a3640; color-scheme:dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 var(--body);
@@ -74,6 +75,36 @@ input:checked~.t .note,input:checked~.t .tag{color:var(--done)}
 .when a{font:500 .72rem var(--mono);color:var(--muted);text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums}
 .when a:hover{color:var(--accent);text-decoration:underline}
 .hide-done li.is-done{display:none}
+/* nation panel: mechanics only this nation has */
+.panel{border:1px solid var(--accent);border-left-width:4px;border-radius:6px;padding:12px 14px;margin:22px 0 0;background:var(--surface)}
+.panel h3{margin:0 0 6px;font:700 .95rem var(--display);letter-spacing:.04em;color:var(--accent)}
+.panel ul{margin:0;padding-left:18px;font-size:.88rem}
+.panel li{margin:3px 0}
+.panel li b{font-weight:600}
+/* era card: army half-stack + what you should have */
+.loadout{border:1px solid var(--card-line);background:var(--card);border-radius:8px;padding:12px 14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 22px;margin:4px 0 14px}
+.lo{min-width:0}
+.lo h4{margin:0 0 4px;font:600 .68rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lo .big{font:600 .95rem var(--mono);font-variant-numeric:tabular-nums}
+.lo .big span{display:inline-block;margin-right:10px}
+.lo .big small{font:500 .7rem var(--mono);color:var(--muted);margin-left:2px}
+.lo p{margin:2px 0 0;font-size:.8rem;color:var(--muted)}
+.lo ul{margin:0;padding:0;list-style:none;font-size:.85rem}
+.lo ul li{padding:1px 0}
+.lo ul li::before{content:"\00B7";color:var(--gold);margin-right:6px;font-weight:700}
+/* topic groups inside an era */
+.group{margin-top:14px}
+.group>h3{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 4px;font:600 .72rem var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.who{font-weight:600}
+/* chained steps: numbered pills ticked in order */
+ol.chain{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+ol.chain li{display:inline-flex;align-items:center;gap:6px;font-size:.84rem;border:1px solid var(--line);border-radius:999px;padding:2px 10px 2px 4px;background:var(--surface);cursor:pointer;user-select:none;text-decoration:none}
+ol.chain li .n{flex:none;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font:600 .68rem var(--mono);background:var(--line);color:var(--fg)}
+ol.chain li.on{color:var(--done);text-decoration:line-through}
+ol.chain li.on .n{background:var(--accent);color:var(--surface)}
+ol.chain li.next{border-color:var(--accent)}
+ol.chain li:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input:checked~.t ol.chain li{color:var(--done)}
 #reference{margin-top:48px;padding-top:6px;border-top:2px solid var(--line)}
 #reference > h2{font-size:1.25rem}
 #reference > p{margin:0 0 4px;color:var(--muted);font-size:.88rem}
@@ -106,6 +137,7 @@ footer{margin-top:36px;font-size:.8rem;color:var(--muted)}
 </div>
 <script>
 const GUIDES=/*GUIDES*/[];
+const ARMY=/*ARMY*/null;
 const HAS_REFS=!!document.getElementById("reference");
 const el=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e};
 const ts=s=>s>=3600?`${Math.floor(s/3600)}:${String(Math.floor(s%3600/60)).padStart(2,"0")}:${String(s%60).padStart(2,"0")}`:`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
@@ -124,7 +156,7 @@ function show(slug){
   main.replaceChildren();
   if(!g){main.append(el("p","empty","No playbooks yet."));return}
   document.title=`${g.nation} Playbook · EU4 Playbooks`;
-  const V=g.video.id,KEY=`eu4-guide-${g.slug}-v1`;let state=load(KEY);
+  const V=g.video.id,KEY=`eu4-guide-${g.slug}-v2`;let state=load(KEY);
 
   const head=el("header","nation");head.append(el("h1",null,`${g.nation} Playbook`));
   const sub=el("p");sub.append(`${g.summary} From `);
@@ -147,44 +179,103 @@ function show(slug){
   bar.append(row,eras);main.append(bar);
   main.classList.remove("hide-done");
 
+  // Panels: mechanics only this nation has, above the first era
+  (g.panels||[]).forEach(pn=>{
+    const box=el("aside","panel");box.append(el("h3",null,pn.title));
+    const ul=el("ul");pn.items.forEach(it=>{const li=el("li");if(it.label)li.append(el("b",null,it.label+". "));li.append(it.text);ul.append(li)});
+    box.append(ul);main.append(box);
+  });
+
+  // Every checkbox, so progress and reset can walk them. state[key] is true/false, or a count for chains.
+  const items=[];
+  const isDone=it=>it.chain?(state[it.key]||0)>=it.chain.length:!!state[it.key];
+
   g.phases.forEach((p,pi)=>{
     const s=el("section");s.id=`${g.slug}-era${pi}`;
     s.append(el("div","era",p.era));
     const h2=el("h2");h2.append(el("span",null,p.name));const c=el("span","num");c.dataset.c=pi;h2.append(c);s.append(h2);
     if(p.intro)s.append(el("p","intro",p.intro));
+    const card=loadoutCard(p.loadout);if(card)s.append(card);
     const a=el("a",null,p.jump);a.href=`#${g.slug}`;a.title=p.name;a.dataset.n=pi;
     a.onclick=ev=>{ev.preventDefault();s.scrollIntoView({behavior:smooth()})};eras.append(a);
-    const ul=el("ul","steps");
-    p.steps.forEach((st,ii)=>{
-      const id=`${g.slug}-c${pi}-${ii}`,sk=`c${pi}-${ii}`,li=el("li",st.wait?"w":null);
-      const lab=el("label");lab.htmlFor=id;
-      const cb=el("input");cb.type="checkbox";cb.id=id;
-      const t=el("span","t");if(st.wait)t.append(el("span","tag","Wait for"));t.append(st.text);
-      if(st.note)t.append(el("span","note",st.note));
-      lab.append(cb,el("span","box"),t);
-      const w=el("span","when");w.append(el("span","d",st.date));
-      const v=el("a",null,`▶ ${ts(st.t)}`);v.href=`https://youtu.be/${V}?t=${st.t}`;v.target="_blank";v.rel="noopener";v.setAttribute("aria-label",`Watch at ${ts(st.t)}`);
-      w.append(v);li.append(lab,w);
-      cb.checked=!!state[sk];li.classList.toggle("is-done",cb.checked);
-      cb.addEventListener("change",()=>{state[sk]=cb.checked;li.classList.toggle("is-done",cb.checked);store(KEY,state);update()});
-      ul.append(li);
+    p.groups.forEach((grp,gi)=>{
+      const gr=el("div","group");
+      if(grp.name){const gh=el("h3");gh.append(el("span",null,grp.name),el("span",null,String(grp.steps.length)));gr.append(gh)}
+      const ul=el("ul","steps");
+      grp.steps.forEach((st,si)=>{
+        const key=`${pi}-${gi}-${si}`,id=`${g.slug}-${key}`;
+        const chain=st.chain&&st.chain.length>1?st.chain:null;
+        const text=st.text||(st.chain&&st.chain.length===1?st.chain[0]:"");
+        const li=el("li",st.wait?"w":null),lab=el("label");lab.htmlFor=id;
+        const cb=el("input");cb.type="checkbox";cb.id=id;
+        const t=el("span","t");
+        if(st.wait)t.append(el("span","tag","Wait for"));
+        if(st.who)t.append(el("span","who",st.who+(text?" ":"")));
+        if(text)t.append(text);
+        let ol=null;
+        if(chain){ol=el("ol","chain");chain.forEach((c,i)=>{const pill=el("li");pill.tabIndex=0;pill.append(el("span","n",String(i+1)),c);ol.append(pill)});t.append(ol)}
+        if(st.note)t.append(el("span","note",st.note));
+        lab.append(cb,el("span","box"),t);
+        const w=el("span","when");w.append(el("span","d",st.date));
+        const v=el("a",null,`▶ ${ts(st.t)}`);v.href=`https://youtu.be/${V}?t=${st.t}`;v.target="_blank";v.rel="noopener";v.setAttribute("aria-label",`Watch at ${ts(st.t)}`);
+        w.append(v);li.append(lab,w);ul.append(li);
+        const it={key,chain,li,cb,ol,pi};items.push(it);
+        const paint=()=>{
+          const done=isDone(it);cb.checked=done;li.classList.toggle("is-done",done);
+          if(ol){const n=state[key]||0;[...ol.children].forEach((x,i)=>{x.classList.toggle("on",i<n);x.classList.toggle("next",i===n)})}
+        };
+        it.paint=paint;
+        cb.addEventListener("change",()=>{state[key]=chain?(cb.checked?chain.length:0):cb.checked;store(KEY,state);paint();update()});
+        if(ol){
+          // Clicking pill i ticks 1..i. Clicking the last ticked pill unticks it.
+          ol.addEventListener("click",ev=>{const pill=ev.target.closest("li");if(!pill)return;ev.preventDefault();
+            const i=[...ol.children].indexOf(pill),n=state[key]||0;state[key]=n===i+1?i:i+1;store(KEY,state);paint();update()});
+          ol.addEventListener("keydown",ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();ev.target.click()}});
+        }
+        paint();
+      });
+      gr.append(ul);s.append(gr);
     });
-    s.append(ul);main.append(s);
+    main.append(s);
   });
   if(HAS_REFS){const a=el("a","ref","Reference");a.href="#reference";a.onclick=ev=>{ev.preventDefault();document.getElementById("reference").scrollIntoView({behavior:smooth()})};eras.append(a)}
 
   function update(){
-    let all=0,done=0;
-    g.phases.forEach((p,pi)=>{let n=0;p.steps.forEach((_,ii)=>{if(state[`c${pi}-${ii}`])n++});all+=p.steps.length;done+=n;
-      main.querySelector(`[data-c="${pi}"]`).textContent=`${n} / ${p.steps.length}`;
-      eras.querySelector(`[data-n="${pi}"]`).classList.toggle("full",n===p.steps.length)});
+    const per=g.phases.map(()=>[0,0]);
+    items.forEach(it=>{per[it.pi][1]++;if(isDone(it))per[it.pi][0]++});
+    let done=0,all=0;
+    per.forEach(([n,tot],pi)=>{done+=n;all+=tot;
+      main.querySelector(`[data-c="${pi}"]`).textContent=`${n} / ${tot}`;
+      eras.querySelector(`[data-n="${pi}"]`).classList.toggle("full",tot>0&&n===tot)});
     total.textContent=`${done} / ${all}`;fill.style.width=(all?done/all*100:0)+"%";
   }
   update();
   tg.onclick=()=>{const on=main.classList.toggle("hide-done");tg.textContent=on?"Show done":"Hide done"};
   rs.onclick=()=>{cf.hidden=false;rs.hidden=true};
   no.onclick=()=>{cf.hidden=true;rs.hidden=false};
-  yes.onclick=()=>{state={};store(KEY,state);main.querySelectorAll("input").forEach(c=>{c.checked=false;c.closest("li").classList.remove("is-done")});update();cf.hidden=true;rs.hidden=false};
+  yes.onclick=()=>{state={};store(KEY,state);items.forEach(it=>it.paint());update();cf.hidden=true;rs.hidden=false};
+}
+
+// Era card: army half-stack from Raven's chart for the era's mil tech, plus what you should have by now
+function loadoutCard(lo){
+  if(!lo)return null;
+  const row=ARMY&&lo.tech>0?[...ARMY.rows].reverse().find(r=>r.tech<=lo.tech):null;
+  const have=lo.have||[];
+  if(!row&&!have.length)return null;
+  const c=el("div","loadout");
+  if(row){
+    const a=el("div","lo");a.append(el("h4",null,"Army half-stack"));
+    const b=el("div","big");
+    [[row.inf,"inf"],[row.cav,"cav"],[row.art,"art"]].forEach(([n,u])=>{const sp=el("span",null,String(n));sp.append(el("small",null,u));b.append(sp)});
+    const yr=ARMY.tech_years[String(lo.tech)],big=(ARMY.big_techs||[]).includes(lo.tech);
+    a.append(b,el("p",null,`Mil tech ${lo.tech}${yr?` (on time ${yr})`:""}. Width ${row.width}.${big?" A big tech jump.":""}${lo.note?" "+lo.note:""}`));
+    c.append(a);
+  }
+  if(have.length){
+    const h=el("div","lo");h.append(el("h4",null,"Have by now"));
+    const ul=el("ul");have.forEach(x=>ul.append(el("li",null,x)));h.append(ul);c.append(h);
+  }
+  return c;
 }
 function route(){
   const h=location.hash.slice(1);

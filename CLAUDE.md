@@ -15,7 +15,8 @@ by era, where every step has the in-game date shown in the video and a timestamp
   - `instructions.md` is how to write a guide. The API prompt and the Claude Code skill both use it.
 - `guides/`: one `<nation>.json` per guide. The file name is the tab's URL slug (`#papal-states`). `papal-states.json` is the
   example that both writing paths imitate.
-- `reference/`: shared charts shown under every nation. They're listed in `references.json`.
+- `reference/`: shared charts shown under every nation, listed in `references.json`. `army.json` is
+  Raven's army chart as data. Each era card looks up its half-stack there from the era's `loadout.tech`.
 - Site: https://salimmohamed.github.io/eu4-video-guides/ (public repo). `.github/workflows/pages.yml` rebuilds it on push to main
   when guides, reference or the site template change. The build is stdlib only. `site/` is gitignored.
 - `.claude/skills/eu4-guide/`: the in-session way to make a guide without an API key.

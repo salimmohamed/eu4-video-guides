@@ -95,6 +95,16 @@ input:checked~.t .note,input:checked~.t .tag{color:var(--done)}
 /* topic groups inside an era */
 .group{margin-top:14px}
 .group>h3{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 4px;font:600 .72rem var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.group{scroll-margin-top:120px}
+/* finished eras and groups fold down to their header; click the header to look inside */
+button.fold{all:unset;display:inline-flex;align-items:baseline;gap:7px;cursor:default}
+button.fold:not(:disabled){cursor:pointer}
+button.fold:not(:disabled)::before{content:"\25BE";font-size:.8em;color:var(--muted)}
+.collapsed>h2 button.fold::before,.collapsed>h3 button.fold::before{content:"\25B8"}
+button.fold:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+section.collapsed>:not(.era):not(h2),.group.collapsed>ul{display:none}
+section.full>h2,section.full>h2 .num,.group.full>h3{color:var(--done)}
+section.collapsed{margin-top:14px}
 .who{font-weight:600}
 /* chained steps: numbered pills ticked in order */
 ol.chain{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
@@ -122,6 +132,7 @@ footer{margin-top:36px;font-size:.8rem;color:var(--muted)}
 @media print{
   :root{--bg:#fff;--fg:#000;--muted:#444;--line:#bbb;--wait-bg:#eef3f7;color-scheme:light}
   .bar,.tabs,.site,footer{display:none}
+  section.collapsed>*,.group.collapsed>ul{display:revert}
   body{font-size:11pt}
   li{break-inside:avoid}
   figure{break-inside:avoid}
@@ -189,18 +200,26 @@ function show(slug){
   // Every checkbox, so progress and reset can walk them. state[key] is true/false, or a count for chains.
   const items=[];
   const isDone=it=>it.chain?(state[it.key]||0)>=it.chain.length:!!state[it.key];
+  // Eras and groups that fold once every box in them is ticked. peek is set when you open a finished one.
+  const folds=[];
+  const fold=(box,name,num)=>{
+    const f={box,peek:false,btn:el("button","fold"),num,n:[0,0],full:false};f.btn.type="button";f.btn.append(el("span",null,name));
+    f.btn.onclick=()=>{f.peek=!f.peek;update()};folds.push(f);return f;
+  };
 
   g.phases.forEach((p,pi)=>{
     const s=el("section");s.id=`${g.slug}-era${pi}`;
     s.append(el("div","era",p.era));
-    const h2=el("h2");h2.append(el("span",null,p.name));const c=el("span","num");c.dataset.c=pi;h2.append(c);s.append(h2);
+    const c=el("span","num");c.dataset.c=pi;const ef=fold(s,p.name,c);ef.era=true;
+    const h2=el("h2");h2.append(ef.btn,c);s.append(h2);
     if(p.intro)s.append(el("p","intro",p.intro));
     const card=loadoutCard(p.loadout);if(card)s.append(card);
     const a=el("a",null,p.jump);a.href=`#${g.slug}`;a.title=p.name;a.dataset.n=pi;
     a.onclick=ev=>{ev.preventDefault();s.scrollIntoView({behavior:smooth()})};eras.append(a);
     p.groups.forEach((grp,gi)=>{
       const gr=el("div","group");
-      if(grp.name){const gh=el("h3");gh.append(el("span",null,grp.name),el("span",null,String(grp.steps.length)));gr.append(gh)}
+      let gf=null;
+      if(grp.name){const gn=el("span","num");gf=fold(gr,grp.name,gn);gf.parent=ef;const gh=el("h3");gh.append(gf.btn,gn);gr.append(gh)}
       const ul=el("ul","steps");
       grp.steps.forEach((st,si)=>{
         const key=`${pi}-${gi}-${si}`,id=`${g.slug}-${key}`;
@@ -219,17 +238,17 @@ function show(slug){
         const w=el("span","when");w.append(el("span","d",st.date));
         const v=el("a",null,`▶ ${ts(st.t)}`);v.href=`https://youtu.be/${V}?t=${st.t}`;v.target="_blank";v.rel="noopener";v.setAttribute("aria-label",`Watch at ${ts(st.t)}`);
         w.append(v);li.append(lab,w);ul.append(li);
-        const it={key,chain,li,cb,ol,pi};items.push(it);
+        const it={key,chain,li,cb,ol,pi,folds:gf?[ef,gf]:[ef]};items.push(it);
         const paint=()=>{
           const done=isDone(it);cb.checked=done;li.classList.toggle("is-done",done);
           if(ol){const n=state[key]||0;[...ol.children].forEach((x,i)=>{x.classList.toggle("on",i<n);x.classList.toggle("next",i===n)})}
         };
         it.paint=paint;
-        cb.addEventListener("change",()=>{state[key]=chain?(cb.checked?chain.length:0):cb.checked;store(KEY,state);paint();update()});
+        cb.addEventListener("change",()=>{state[key]=chain?(cb.checked?chain.length:0):cb.checked;store(KEY,state);paint();update(true)});
         if(ol){
           // Clicking pill i ticks 1..i. Clicking the last ticked pill unticks it.
           ol.addEventListener("click",ev=>{const pill=ev.target.closest("li");if(!pill)return;ev.preventDefault();
-            const i=[...ol.children].indexOf(pill),n=state[key]||0;state[key]=n===i+1?i:i+1;store(KEY,state);paint();update()});
+            const i=[...ol.children].indexOf(pill),n=state[key]||0;state[key]=n===i+1?i:i+1;store(KEY,state);paint();update(true)});
           ol.addEventListener("keydown",ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();ev.target.click()}});
         }
         paint();
@@ -240,14 +259,27 @@ function show(slug){
   });
   if(HAS_REFS){const a=el("a","ref","Reference");a.href="#reference";a.onclick=ev=>{ev.preventDefault();document.getElementById("reference").scrollIntoView({behavior:smooth()})};eras.append(a)}
 
-  function update(){
-    const per=g.phases.map(()=>[0,0]);
-    items.forEach(it=>{per[it.pi][1]++;if(isDone(it))per[it.pi][0]++});
+  // ticked: true when called right after the player ticked something, so a section that just
+  // folded above the screen gets scrolled back into view instead of the page jumping past the next one.
+  function update(ticked){
+    folds.forEach(f=>f.n=[0,0]);
     let done=0,all=0;
-    per.forEach(([n,tot],pi)=>{done+=n;all+=tot;
-      main.querySelector(`[data-c="${pi}"]`).textContent=`${n} / ${tot}`;
-      eras.querySelector(`[data-n="${pi}"]`).classList.toggle("full",tot>0&&n===tot)});
+    items.forEach(it=>{const d=isDone(it);all++;if(d)done++;it.folds.forEach(f=>{f.n[1]++;if(d)f.n[0]++})});
+    let scrollTo=null;
+    folds.forEach(f=>{
+      const [n,tot]=f.n,full=tot>0&&n===tot;
+      if(!full)f.peek=false;
+      // inside a finished era the groups stay open, so opening the era shows everything
+      const folded=full&&!f.peek&&!(f.parent&&f.parent.full);
+      if(ticked&&folded&&!f.box.classList.contains("collapsed")&&!scrollTo)scrollTo=f.box;
+      f.full=full;f.box.classList.toggle("full",full);f.box.classList.toggle("collapsed",folded);
+      f.btn.disabled=!full;f.btn.setAttribute("aria-expanded",String(!folded));
+      if(full)f.btn.title=folded?"Finished. Click to show the steps":"Click to fold";else f.btn.removeAttribute("title");
+      f.num.textContent=`${n} / ${tot}`;
+    });
+    folds.filter(f=>f.era).forEach((f,pi)=>eras.querySelector(`[data-n="${pi}"]`).classList.toggle("full",f.full));
     total.textContent=`${done} / ${all}`;fill.style.width=(all?done/all*100:0)+"%";
+    if(scrollTo&&scrollTo.getBoundingClientRect().top<120)scrollTo.scrollIntoView({block:"start",behavior:smooth()});
   }
   update();
   tg.onclick=()=>{const on=main.classList.toggle("hide-done");tg.textContent=on?"Show done":"Hide done"};

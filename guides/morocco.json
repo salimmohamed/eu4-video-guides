@@ -1,0 +1,963 @@
+{
+  "nation": "Morocco",
+  "patch": "1.35",
+  "summary": "EU4 1.35, 1444 to 1509.",
+  "video": {
+    "id": "uSGfzbsLKq4",
+    "title": "EU4 1.35 Morocco Guide - RAIDING + GOLD MINES = OP ANDALUSIA",
+    "channel": "The Red Hawk"
+  },
+  "panels": [
+    {
+      "title": "Berber Iqta and raiding, all game",
+      "items": [
+        {
+          "label": "Iqta abilities",
+          "text": "Start with Lenient Taxation (+1 diplomatic reputation, -15% liberty desire in subjects). Once it runs out, use the core-cost one (he takes it) or the tax one, whichever you need."
+        },
+        {
+          "label": "Raid coasts",
+          "text": "Send light ships along the coast with shift-click, then press Raid in each sea tile for ducats and sailors. You can raid again every couple of years. Always keep raiding, it's an underrated income."
+        },
+        {
+          "label": "The Ottomans are your only ally",
+          "text": "Ally them early and keep them. Whenever you declare on the Mamluks, call the Ottomans in so you control their truce and they don't take Egypt for themselves."
+        },
+        {
+          "label": "Corruption trick",
+          "text": "On the Muslim event that lets you gain or lose corruption, debase currency for cash first, then pick the option that loses corruption."
+        }
+      ]
+    }
+  ],
+  "phases": [
+    {
+      "name": "Day one setup",
+      "era": "11 Nov 1444",
+      "jump": "1444",
+      "intro": "Everything here happens before you unpause. You start with three subjects (Tafilalt, Sous, Marrakesh) that you hold cores on, so they annex for free in 1454.",
+      "loadout": {
+        "tech": 0,
+        "note": "",
+        "have": []
+      },
+      "groups": [
+        {
+          "name": "Government",
+          "ordered": false,
+          "steps": [
+            {
+              "text": "Iqta ability: Lenient Taxation",
+              "note": "Subjects are rowdy. Over 50% liberty desire, the Iberians can back their independence",
+              "date": "Nov 1444",
+              "t": 120
+            },
+            {
+              "text": "Naval doctrine: Maghrebi Corsairs",
+              "note": "More privateer efficiency and loot. Swap to the galley combat doctrine before you fight the Iberians",
+              "date": "Nov 1444",
+              "t": 175
+            }
+          ]
+        },
+        {
+          "name": "Estates",
+          "ordered": false,
+          "steps": [
+            {
+              "text": "Summon the Diet",
+              "note": "Pick whichever agenda suits you",
+              "date": "Nov 1444",
+              "t": 140
+            },
+            {
+              "text": "Ulema: Religious State, Clerical Advisory Council, Religious Diplomats, Clerical Education",
+              "date": "Nov 1444",
+              "t": 145
+            },
+            {
+              "text": "Amirs: Primacy of the Amirs, Increased Levies, Aristocratic Counselors",
+              "note": "They already have Strong Duchies. Integration Policy comes later, right before annexing subjects",
+              "date": "Nov 1444",
+              "t": 150
+            },
+            {
+              "text": "Merchants: Land of Commerce, Patronage of the Arts, Commercial Advisory Board, Indebted to the Merchant Guilds",
+              "note": "No Dhimmi privileges for now. Then seize land",
+              "date": "Nov 1444",
+              "t": 165
+            }
+          ]
+        },
+        {
+          "name": "Advisors (level 1)",
+          "ordered": false,
+          "steps": [
+            {
+              "text": "Hire three level 1 advisors even though you're losing money",
+              "note": "Admin: any (he takes national tax). Diplo: diplomatic reputation or improve relations. Mil: morale, discipline, fort defense or manpower (he takes manpower, you lose a lot to attrition). Raiding and the Tafilalt gold pay for it",
+              "date": "Nov 1444",
+              "t": 195
+            }
+          ]
+        },
+        {
+          "name": "Army and navy",
+          "ordered": false,
+          "steps": [
+            {
+              "text": "Hire the free company in Fez",
+              "date": "Nov 1444",
+              "t": 225
+            },
+            {
+              "who": "Raid",
+              "chain": [
+                "Shift-click your 5 light ships along every coastal sea tile",
+                "Press Raid in each tile as they arrive"
+              ],
+              "note": "Ducats and sailors from every province in range",
+              "date": "Nov 1444",
+              "t": 240
+            }
+          ]
+        },
+        {
+          "name": "Diplomacy",
+          "ordered": false,
+          "steps": [
+            {
+              "who": "Tunis",
+              "text": "Ally",
+              "note": "Only so they don't ally Tlemcen or Granada. Don't royal marry them",
+              "date": "Nov 1444",
+              "t": 275
+            },
+            {
+              "who": "Ottomans",
+              "chain": [
+                "Royal marry, or improve relations if you can't",
+                "Ally"
+              ],
+              "note": "Your one real ally for the whole game",
+              "date": "Nov 1444",
+              "t": 280
+            },
+            {
+              "who": "Spy networks",
+              "chain": [
+                "Granada, with the free diplomat",
+                "Tlemcen, once the Tunis diplomat is back"
+              ],
+              "date": "Nov 1444",
+              "t": 285
+            },
+            {
+              "who": "Rivals",
+              "text": "Rival whoever rivals you (Aragon, Castile, England in his game). He picks Portugal",
+              "date": "Nov 1444",
+              "t": 300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "First war: Granada or Tlemcen",
+      "era": "Nov 1444 to May 1449",
+      "jump": "1446",
+      "intro": "The crisis of the Maghreb event fires in the first month and hurts every Maghreb nation. Fight whichever of Granada or Tlemcen is easier.",
+      "loadout": {
+        "tech": 3,
+        "note": "Ten galleys on top of the army, even over naval force limit",
+        "have": [
+          "Allies (Tunis, Ottomans)",
+          "Claims on Granada and Tlemcen"
+        ]
+      },
+      "groups": [
+        {
+          "name": "In order",
+          "ordered": true,
+          "steps": [
+            {
+              "who": "Get ready",
+              "chain": [
+                "Build about 10 galleys with the raid money and sailors",
+                "Ally the Ottomans",
+                "Get claims on Granada and Tlemcen",
+                "Put your ruler in charge of the army",
+                "Hire an admiral and park the fleet off your target"
+              ],
+              "note": "The starting ruler is bad, you want him to die. Claim even where Tafilalt has cores, it saves diplo points",
+              "date": "Sep 1446",
+              "t": 330
+            },
+            {
+              "text": "Declare on Granada if you can, otherwise Tlemcen",
+              "note": "He fought Tlemcen because Granada allied his ally Tunis",
+              "date": "Sep 1446",
+              "t": 360
+            },
+            {
+              "text": "Set subjects to Siege",
+              "date": "Feb 1448",
+              "t": 390
+            },
+            {
+              "text": "If you end up at war with Fezzan, vassalize them",
+              "note": "Otherwise Tunis or the Mamluks usually get them before you border them",
+              "date": "May 1449",
+              "t": 420
+            },
+            {
+              "wait": true,
+              "text": "Castile may annex Granada while you fight Tlemcen",
+              "note": "Normal, you'll take it later. If the follow-up event pops a new nation, pick the third option",
+              "date": "Jul 1448",
+              "t": 430
+            },
+            {
+              "who": "Peace",
+              "chain": [
+                "Full annex Tlemcen (or vassalize or annex Granada)",
+                "Keep Figuig yourself instead of giving it to Tafilalt",
+                "Take all their money"
+              ],
+              "note": "Figuig would stop Tafilalt annexing on time since it isn't your core",
+              "date": "May 1449",
+              "t": 470
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mzab and Djerid",
+      "era": "Jan 1451 to Jun 1453",
+      "jump": "1451",
+      "intro": "Wipe out Tlemcen and the small nations south of Tunis before Tunis gets to them.",
+      "loadout": {
+        "tech": 3,
+        "note": "",
+        "have": [
+          "Tlemcen annexed (or Granada)",
+          "Your three subjects heading to 190 opinion"
+        ]
+      },
+      "groups": [
+        {
+          "name": "In order",
+          "ordered": true,
+          "steps": [
+            {
+              "text": "Improve relations with your three subjects to 190, and with your allies",
+              "note": "So you can annex them all the moment 1454 comes",
+              "date": "Jan 1451",
+              "t": 510
+            },
+            {
+              "who": "Mzab",
+              "chain": [
+                "Spy network",
+                "Declare",
+                "Full annex"
+              ],
+              "note": "Or whichever of Mzab and Djerid you border. If Tunis already ate them, break the Tunis alliance now",
+              "date": "Jan 1451",
+              "t": 495
+            },
+            {
+              "who": "Djerid",
+              "chain": [
+                "Start spying while the last war is running",
+                "Declare",
+                "Full annex"
+              ],
+              "date": "Apr 1452",
+              "t": 555
+            },
+            {
+              "text": "Break the alliance with Tunis when you start the last of these wars",
+              "note": "Keep it if you don't feel ready to face the Iberians with just the Ottomans",
+              "date": "Mar 1453",
+              "t": 600
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Annex subjects and build up",
+      "era": "Dec 1454 to Dec 1459",
+      "jump": "1454",
+      "intro": "December 1454 is the trigger. Your subjects annex in one month with no diplo points.",
+      "loadout": {
+        "tech": 4,
+        "note": "",
+        "have": [
+          "Tlemcen and the small southern nations annexed",
+          "Ottoman alliance, Tunis alliance broken"
+        ]
+      },
+      "groups": [
+        {
+          "name": "Subjects",
+          "ordered": true,
+          "steps": [
+            {
+              "who": "Annex subjects",
+              "chain": [
+                "Recall all three diplomats in December 1454",
+                "Give the Amirs Integration Policy",
+                "Annex Tafilalt, Sous and Marrakesh",
+                "Wait for the month to tick"
+              ],
+              "note": "They're at 100% immediately because you hold cores",
+              "date": "1 Dec 1454",
+              "t": 660
+            },
+            {
+              "text": "Full state their provinces",
+              "date": "Jan 1455",
+              "t": 705
+            },
+            {
+              "who": "Tafilalt gold",
+              "chain": [
+                "Encourage Development edict in the Tafilalt state",
+                "Dev the gold mine to 10 production"
+              ],
+              "date": "Feb 1455",
+              "t": 715
+            }
+          ]
+        },
+        {
+          "name": "Army and navy",
+          "ordered": false,
+          "steps": [
+            {
+              "text": "Lower autonomy, then trim the inherited fleet to what you can afford",
+              "note": "He deletes extra cogs and a light ship, sends 10 ships to privateer in Sevilla and keeps the war fleet docked. Being over force limit is fine if you can pay for it",
+              "date": "Feb 1455",
+              "t": 735
+            },
+            {
+              "text": "Raid every coastal province again",
+              "note": "Every couple of years",
+              "date": "Dec 1455",
+              "t": 780
+            },
+            {
+              "text": "Keep your forts if you're not sure you can stop invasions",
+              "note": "Delete them only if you're confident nobody crosses",
+              "date": "Dec 1455",
+              "t": 790
+            }
+          ]
+        },
+        {
+          "name": "Diplomacy",
+          "ordered": false,
+          "steps": [
+            {
+              "text": "Spy on Tunis, keep improving relations with the Ottomans and curry favors",
+              "date": "Feb 1455",
+              "t": 765
+            }
+          ]
+        },
+        {
+          "name": "Economy",
+          "ordered": false,
+          "steps": [
+            {
+              "who": "Marketplaces",
+              "chain": [
+                "Pay off the starting burgher loans",
+                "Take new burgher loans",
+                "Build marketplaces in every center of trade and estuary"
+              ],
+              "note": "Any province giving more than 2 trade power: Tangier, Gharb, Tafilalt, Draa, Agadir, Tlemcen",
+              "date": "Jul 1456",
+              "t": 870
+            },
+            {
+              "text": "Admin tech 4: build mosques",
+              "date": "Jul 1456",
+              "t": 910
+            },
+            {
+              "who": "Renaissance",
+              "chain": [
+                "Reach tech 4 in every category",
+                "Encourage Development edict",
+                "Dev the capital or Tangier for the Renaissance",
+                "At 15 dev, expand infrastructure there"
+              ],
+              "note": "It won't spread to you. He uses Tangier (cloth, level 2 center of trade). Core first, full state later with spare admin",
+              "date": "Jan 1457",
+              "t": 915
+            },
+            {
+              "text": "Tier 2 reform: Strengthen Noble Privileges",
+              "note": "Compromise with the Nobility if the Amirs' influence is already high. You need the manpower for attrition",
+              "date": "Jun 1457",
+              "t": 955
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "War with Tunis",
+      "era": "Dec 1459 to Apr 1464",
+      "jump": "1459",
+      "intro": "Declare as soon as the truce from breaking the alliance runs out.",
+      "loadout": {
+        "tech": 4,
+        "note": "Don't fall a mil tech behind Tunis while you dev for the Renaissance",
+        "have": [
+          "Tier 2 reform (Strengthen Noble Privileges, or Compromise with the Nobility if Amir influence is high)",
+          "Marketplaces in your centers of trade",
+          "Ottoman favors saved up"
+        ]
+      },
+      "groups": [
+        {
+          "name": "In order",
+          "ordered": true,
+          "steps": [
+            {
+              "who": "Get ready",
+              "chain": [
+                "Check Tunis' allies",
+                "If they allied the Ottomans, spend favors to make the Ottomans drop them"
+              ],
+              "note": "Rarely Tunis allies the Mamluks. Then fight the Mamluks with the Ottomans and add Tunis to that war",
+              "date": "Dec 1459",
+              "t": 1020
+            },
+            {
+              "text": "Declare on Tunis",
+              "date": "Dec 1459",
+              "t": 1060
+            },
+            {
+              "text": "Wattasid Conspiracy event: first option",
+              "note": "You lose stability and pretender rebels rise, maybe more than once. Beat them so the mission branch moves on. Only let them win if their ruler is really good",
+              "date": "Sep 1460",
+              "t": 1080
+            },
+            {
+              "who": "Peace",
+              "chain": [
+                "Give Fezzan back its core that Tunis took",
+                "Take the three centers of trade, Tripoli and Djerba among them",
+                "Take a bit more, leave Tunis a small rump"
+              ],
+              "note": "No money or war reparations. You want a short truce to finish them later",
+              "date": "Sep 1461",
+              "t": 1145
+            },
+            {
+              "text": "Fezzan: fight them if they still exist, or annex them at 190 if they're your vassal",
+              "date": "Nov 1462",
+              "t": 1215
+            },
+            {
+              "text": "Embrace the Renaissance",
+              "note": "Take loans if you need to. Don't sell it to Timbuktu, you'll fight them later",
+              "date": "Nov 1462",
+              "t": 1200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Missions, forts and West Africa",
+      "era": "Apr 1464 to Nov 1472",
+      "jump": "1464",
+      "intro": "Three routes open now: Iberia, Egypt and West Africa. Take whichever is easiest at any moment.",
+      "loadout": {
+        "tech": 4,
+        "note": "He's at mil tech 5 against Timbuktu's 3 by 1471",
+        "have": [
+          "All of the Maghreb except Tunis",
+          "Renaissance embraced"
+        ]
+      },
+      "groups": [
+        {
+          "name": "Missions",
+          "ordered": true,
+          "steps": [
+            {
+              "who": "Capital mission",
+              "chain": [
+                "Mosques (or 15 dev) in Fez, Marrakesh, Meknes and Gharb",
+                "Event: keep Fez as your capital"
+              ],
+              "note": "Fez is a level 3 center of trade. He took loans for the mosques",
+              "date": "Apr 1464",
+              "t": 1250
+            },
+            {
+              "text": "Saharan Route mission",
+              "note": "Caravan power, a core on Tuat and permanent claims in West Africa, where the gold mines are",
+              "date": "Jul 1467",
+              "t": 1350
+            },
+            {
+              "text": "After the Wattasid resolution gives +1 stability, take the next mission, then Conquer Algiers",
+              "note": "Claims on land you mostly own already, then more privateer efficiency",
+              "date": "Sep 1467",
+              "t": 1395
+            }
+          ]
+        },
+        {
+          "name": "Government and ideas",
+          "ordered": false,
+          "steps": [
+            {
+              "text": "Swap the Iqta ability once Lenient Taxation runs out",
+              "note": "He takes the core-cost one. The tax one is the other option",
+              "date": "Apr 1464",
+              "t": 1275
+            },
+            {
+              "text": "Admin tech 5: first idea group. Quality (he takes it) or Quantity",
+              "note": "Going colonial instead: Exploration, then Expansion. Quality if you manage armies carefully, Quantity to scale fast through desert attrition",
+              "date": "May 1468",
+              "t": 1425
+            }
+          ]
+        },
+        {
+          "name": "Forts",
+          "ordered": true,
+          "steps": [
+            {
+              "who": "New forts",
+              "chain": [
+                "Tuat",
+                "Fezzan",
+                "On the Mamluk border"
+              ],
+              "note": "So nobody walks into your core land",
+              "date": "Jul 1470",
+              "t": 1520
+            },
+            {
+              "text": "Delete the inland forts, but keep one coastal fort as bait",
+              "note": "Enemies who siege it get trapped when your navy blocks the sea tile",
+              "date": "Jan 1471",
+              "t": 1560
+            }
+          ]
+        },
+        {
+          "name": "Diplomacy and war",
+          "ordered": true,
+          "steps": [
+            {
+              "text": "Take any easy war against Castile, Portugal or Aragon",
+              "note": "His Iberian alliances were too strong. Yours probably won't be",
+              "date": "Jul 1467",
+              "t": 1300
+            },
+            {
+              "text": "Spy on the Mamluks for claims, and keep lowering autonomy after raids",
+              "date": "Jul 1470",
+              "t": 1505
+            },
+            {
+              "text": "Declare on whoever holds your West Africa claims (Timbuktu for him)",
+              "note": "They have big allies on paper but are far behind in tech",
+              "date": "Jan 1471",
+              "t": 1600
+            },
+            {
+              "who": "Peace",
+              "text": "Only the claimed provinces, no money, no war reparations",
+              "note": "The next mission gives more claims and you want short truces. If you full annex someone, take their money",
+              "date": "May 1472",
+              "t": 1630
+            },
+            {
+              "text": "Claim Timbuktu mission",
+              "date": "Nov 1472",
+              "t": 1655
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mamluks and Iberia",
+      "era": "Nov 1472 to Jan 1489",
+      "jump": "1474",
+      "intro": "Juggle the three fronts. Hit the Mamluks with the Ottomans and look for an opening in Iberia.",
+      "loadout": {
+        "tech": 5,
+        "note": "",
+        "have": [
+          "First idea group (Quality or Quantity, or Exploration if colonial)",
+          "Forts in Tuat, Fezzan and on the Mamluk border",
+          "First West Africa provinces"
+        ]
+      },
+      "groups": [
+        {
+          "name": "Mamluks",
+          "ordered": true,
+          "steps": [
+            {
+              "text": "Build a few more light ships to privateer",
+              "date": "Nov 1474",
+              "t": 1680
+            },
+            {
+              "text": "Declare on the Mamluks and call in the Ottomans",
+              "note": "Even if you could win alone. Declare before the Ottomans do, around the 1480s",
+              "date": "Dec 1476",
+              "t": 1770
+            },
+            {
+              "text": "Tier 3 reform: Decentralized Bureaucracy",
+              "note": "+2 promoted cultures, minimum autonomy in territories and estate equilibrium",
+              "date": "Mar 1477",
+              "t": 1810
+            },
+            {
+              "who": "Peace",
+              "chain": [
+                "Egyptian coast (Alexandria, Rashid, Damietta)",
+                "War reparations",
+                "All their money"
+              ],
+              "note": "As much coast as your admin allows. You'll keep fighting them",
+              "date": "May 1484",
+              "t": 1860
+            }
+          ]
+        },
+        {
+          "name": "Iberia",
+          "ordered": true,
+          "steps": [
+            {
+              "text": "Swap the naval doctrine to galley combat ability",
+              "note": "The Iberians have strong navies. He says this on day one",
+              "date": "Nov 1444",
+              "t": 185
+            },
+            {
+              "who": "Portugal first",
+              "chain": [
+                "Build a sizable navy",
+                "Declare on Portugal",
+                "Hold Ceuta",
+                "White peace Castile and England when they get bored",
+                "Fight Portugal one on one for Ceuta and land in Iberia"
+              ],
+              "note": "Or catch Aragon without strong allies. By the 1480s you could own southern Iberia and form Andalusia",
+              "date": "Jul 1484",
+              "t": 1950
+            }
+          ]
+        },
+        {
+          "name": "Tunis and Genoa",
+          "ordered": true,
+          "steps": [
+            {
+              "text": "Full annex what's left of Tunis",
+              "date": "Oct 1486",
+              "t": 2010
+            },
+            {
+              "text": "Spy on whoever took Maghreb land (Genoa for him) for when the truce ends",
+              "date": "May 1488",
+              "t": 2030
+            }
+          ]
+        },
+        {
+          "name": "Economy",
+          "ordered": false,
+          "steps": [
+            {
+              "text": "Convert Ibadi provinces once you have the missionary strength",
+              "note": "No rush",
+              "date": "May 1488",
+              "t": 2040
+            },
+            {
+              "text": "Promote Algerian and Tunisian",
+              "date": "May 1488",
+              "t": 2045
+            },
+            {
+              "who": "Buildings",
+              "chain": [
+                "Take new burgher loans",
+                "Marketplaces in centers of trade and estuaries",
+                "Workshops in high-value trade good provinces"
+              ],
+              "note": "Planning for later, when autonomy, culture and religion catch up",
+              "date": "Jan 1489",
+              "t": 2100
+            },
+            {
+              "text": "Upgrade every great project you own once you're rich",
+              "note": "Your starting one, the Holy City of Kairouan from Tunis and the Great Mosque of Djenne are all strong at tier 3. Not a priority yet",
+              "date": "Jan 1489",
+              "t": 2075
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Trade, Songhai and the Sahel",
+      "era": "Jul 1489 to Dec 1505",
+      "jump": "1489",
+      "intro": "",
+      "loadout": {
+        "tech": 6,
+        "note": "",
+        "have": [
+          "Tier 3 reform (Decentralized Bureaucracy)",
+          "Egyptian coast and Tunis",
+          "Algerian and Tunisian promoted"
+        ]
+      },
+      "groups": [
+        {
+          "name": "Ideas and trade",
+          "ordered": false,
+          "steps": [
+            {
+              "text": "Admin tech 7: second idea group, Trade",
+              "note": "Colonial: Expansion instead. You can't make trade companies from Africa, so merchants have to come from ideas",
+              "date": "Jul 1489",
+              "t": 2140
+            },
+            {
+              "text": "Third merchant: transfer or collect near the Sevilla node",
+              "note": "He collects in Alexandria for now. Once you form Andalusia the capital moves and Sevilla becomes your home node",
+              "date": "Dec 1491",
+              "t": 2200
+            },
+            {
+              "text": "Admin tech 8: courthouses everywhere",
+              "note": "You'll be over governing capacity by now",
+              "date": "Sep 1498",
+              "t": 2345
+            }
+          ]
+        },
+        {
+          "name": "Wars",
+          "ordered": true,
+          "steps": [
+            {
+              "who": "Genoa",
+              "chain": [
+                "Declare when the truce ends",
+                "Take the three provinces they took from Tunis",
+                "Take a little cash"
+              ],
+              "note": "He also took Corsica as a foot in the door in Italy",
+              "date": "Mar 1492",
+              "t": 2225
+            },
+            {
+              "who": "Songhai",
+              "chain": [
+                "Declare for the claimed provinces",
+                "Separate peace Timbuktu for its claimed province",
+                "Take the claimed provinces and some money"
+              ],
+              "note": "Songhai keeps up on tech through their missions. Your Tuat fort is what stops them walking through your land",
+              "date": "Jul 1496",
+              "t": 2290
+            },
+            {
+              "text": "Sahel Campaign mission, then invade Mali, Kanem and Benin as the missions say",
+              "note": "Permanent claims across the Niger and Sahel. Fight whoever is weakest, no new allies needed",
+              "date": "Jul 1498",
+              "t": 2330
+            },
+            {
+              "text": "Declare on the Mamluks again when the truce ends, with the Ottomans",
+              "date": "Dec 1499",
+              "t": 2385
+            },
+            {
+              "text": "Tier 4 reform: Strengthen the Ulema",
+              "note": "If you plan to convert. Otherwise Curtail Clerical Privileges, or Maintain Balance of Power for a diplomat",
+              "date": "Dec 1502",
+              "t": 2410
+            },
+            {
+              "who": "Peace",
+              "text": "Mamluk coast and high-dev provinces, plus money",
+              "date": "Dec 1505",
+              "t": 2430
+            },
+            {
+              "text": "Once big, diplo-vassalize minors where you plan to expand next, like Italy",
+              "date": "Dec 1505",
+              "t": 2440
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1509 benchmarks",
+      "era": "Mar 1509",
+      "jump": "1509",
+      "intro": "Where you should be when colonialism spawns.",
+      "loadout": {
+        "tech": 0,
+        "note": "",
+        "have": []
+      },
+      "groups": [
+        {
+          "name": "",
+          "ordered": false,
+          "steps": [
+            {
+              "text": "Realm: all of the Maghreb, a foothold in the Sahel and in Egypt, maybe part of Iberia and Andalusia formed",
+              "date": "Mar 1509",
+              "t": 2580
+            },
+            {
+              "text": "Buildings: marketplaces in every center of trade and estuary, workshops in high-value goods, plenty of mosques, a few army buildings",
+              "date": "Mar 1509",
+              "t": 2670
+            },
+            {
+              "text": "Army: 24 infantry / 4 cavalry / 7 artillery, costing about 13 ducats a month",
+              "note": "He could afford to double it and still make about 17 ducats profit",
+              "date": "Mar 1509",
+              "t": 2715
+            },
+            {
+              "text": "Income mostly from tax, production and gold",
+              "note": "Trade stays low until you move to the Sevilla node",
+              "date": "Mar 1509",
+              "t": 2740
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Later picks",
+      "era": "After 1509",
+      "jump": "Later",
+      "intro": "",
+      "loadout": {
+        "tech": 0,
+        "note": "",
+        "have": []
+      },
+      "groups": [
+        {
+          "name": "Ideas",
+          "ordered": true,
+          "steps": [
+            {
+              "text": "Third idea group: whichever of Quality and Quantity you didn't take",
+              "note": "Colonial: Exploration, Expansion, then the same as below",
+              "date": "1509",
+              "t": 2770
+            },
+            {
+              "text": "Fourth: Administrative or Diplomatic for expansion, Economic or Infrastructure for money, or Humanist or Religious for stability",
+              "date": "1509",
+              "t": 2790
+            }
+          ]
+        },
+        {
+          "name": "Reforms",
+          "ordered": true,
+          "steps": [
+            {
+              "text": "Tier 5: Organized Military Staff or Military Engineering",
+              "date": "1509",
+              "t": 2810
+            },
+            {
+              "text": "Tier 6: Aristocratic Court, then Royal Decree once absolutism spawns",
+              "date": "1509",
+              "t": 2815
+            },
+            {
+              "text": "Tier 7: Meritocratic Recruitment",
+              "note": "Colonial: the colonial companies option",
+              "date": "1509",
+              "t": 2825
+            },
+            {
+              "text": "Tier 8: Empower the Burghers or Embrace Economic Theory",
+              "note": "Colonial: Exploitation of the New World",
+              "date": "1509",
+              "t": 2830
+            },
+            {
+              "text": "Tier 9: depends on your subjects. Tiers 10 and 11: any",
+              "date": "1509",
+              "t": 2840
+            }
+          ]
+        },
+        {
+          "name": "Where to expand",
+          "ordered": false,
+          "steps": [
+            {
+              "text": "Keep pushing the Mamluks, calling in the Ottomans every time",
+              "date": "1509",
+              "t": 2555
+            },
+            {
+              "text": "Conquer the Sahel, Niger and Guinea and dev the other gold mines",
+              "date": "1509",
+              "t": 2540
+            },
+            {
+              "text": "Form Andalusia and move the capital to the Sevilla node, then route trade there",
+              "date": "1509",
+              "t": 2610
+            },
+            {
+              "text": "Colonial runs: trade companies on the Ivory Coast, South Africa and Zanzibar",
+              "date": "1509",
+              "t": 2605
+            },
+            {
+              "text": "Egypt for sure, the Mashriq and Arabia if your goals go there. The Horn of Africa isn't needed",
+              "date": "1509",
+              "t": 2625
+            },
+            {
+              "text": "Get every great project you own to tier 3, including the Iberian ones",
+              "date": "1509",
+              "t": 2700
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
